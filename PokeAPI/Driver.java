@@ -9,12 +9,12 @@ import org.json.JSONObject;
 public class Driver {
 
 	public static void main(String[] args) {
-		System.out.println("Enter name of a Pokemon:");
 		
 		selectPokemon();
 	}
 	
 	public static void selectPokemon() {
+		System.out.println("Enter name of a Pokemon:");
 		Scanner scan = new Scanner(System.in); String name = scan.next();
 		 
 		System.out.println(name);
@@ -23,7 +23,7 @@ public class Driver {
 			getInfo(name);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			System.out.println("pokemon not found! try another:");
+			System.out.println("pokemon not found!");
 			selectPokemon();
 		}
 	}
