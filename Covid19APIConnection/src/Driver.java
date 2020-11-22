@@ -35,11 +35,31 @@ public class Driver {
 		HttpResponse<String> response;
 		try {
 			response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-			System.out.println(response.body());
 			JSONArray countryInfo = new JSONArray(response.body());
 			JSONObject country = countryInfo.getJSONObject(0);
+			
+			String cName = country.getString("country");
+			String code = country.getString("code");
+			int confirmed = country.getInt("confirmed");
+			int recovered = country.getInt("recovered");
+			int critical = country.getInt("critical");
 			int deaths = country.getInt("deaths");
-				System.out.println(deaths);
+			int latitude = country.getInt("latitude");
+			int longitude = country.getInt("longitude");
+			String lastChange = country.getString("lastChange");
+			String lastUpdate = country.getString("lastUpdate");
+
+			System.out.println("Here are the Covid-19 stats for: \"" + name + "\"");
+			System.out.println("Name: " + cName);
+			System.out.println("Code: " + code);
+			System.out.println("Confirmed: " + confirmed);
+			System.out.println("Recovered: " + recovered);
+			System.out.println("Critical: " + critical);
+			System.out.println("Deaths: " + deaths);
+			System.out.println("Latitude: " + latitude);
+			System.out.println("Longitude: " + longitude);
+			System.out.println("Last change: " + lastChange);
+			System.out.println("Last update: " + lastUpdate);
 			
 		} catch (IOException e) {
 			e.printStackTrace();
